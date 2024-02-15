@@ -1,21 +1,13 @@
-import gif from './mission-complete.gif';
-import './App.css';
+import Banner from './componentes/Banner';
+import CampoTexto from './componentes/CampoTexto';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={gif} className="App-logo" alt="logo" />
-        <p>
-          Hello World!
-        </p>
-        <p>
-          Esse é meu primeiro código em React!
-        </p>
-        <p>
-          #100DaysOfCode! - Day#001
-        </p>
-      </header>
+      <Banner/>
+      <CampoTexto label="Nome" placeholder="Digite seu nome..."/>
+      <CampoTexto label="Cargo" placeholder="Digite seu cargo..."/>
+      <CampoTexto label="Imagem" placeholder="Digite o endereço da imagem..."/>
     </div>
   );
 }
