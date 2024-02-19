@@ -1,0 +1,25 @@
+.botao {
+   background-color: #6278f7;
+   border-radius: 10px;
+   font-weight: 700;
+   font-size: 18px;
+   padding: 32px;
+   border: none; 
+   cursor: pointer;
+   color: #FFF;
+   margin: 32px 0;
+}
+   
+.botao:hover {
+   animation: translateY 0.8s infinite alternate;
+   color: #95FFD4
+ }
+ 
+ @keyframes translateY {
+   from {
+     transform: translateY(0) scale(1);
+   }
+   to {
+     transform: translateY(-8px) scale(1.1);
+   }
+ }
