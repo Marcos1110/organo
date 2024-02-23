@@ -14,16 +14,22 @@ const Formulario = () => {
       'Eternos',
       'Agentes do Atlas'
    ]
+
+   const AoSalvar = (evento) => {
+      evento.preventDefault()
+      console.log("Formulário cadastrado!!")
+   }
+
    return (
       <section className='formulario'>
-         <form>
-         <h2>Preencha os dados para criar o card do colaborador:</h2>
-            <CampoTexto label = "Nome" placeholder = "Digite seu nome..."/>
-            <CampoTexto label = "Cargo" placeholder = "Digite seu cargo..."/>
-            <CampoTexto label = "Imagem" placeholder = "Digite o endereço da imagem..."/>
-            <ListaSuspensa label="Equipe" itens = { grupos }/>
+         <form onSubmit={ AoSalvar }>
+         <h2>Preencha os dados para criar o card do herói:</h2>
+            <CampoTexto obrigatorio={ true } label = "Nome" placeholder = "Ex:Tony Stark"/>
+            <CampoTexto obrigatorio={ true } label = "Alter Ego" placeholder = "Ex: Homem de Ferro"/>
+            <CampoTexto label = "Imagem" placeholder = "Insira o endereço da imagem aqui..."/>
+            <ListaSuspensa obrigatorio={ true } label="Equipe" itens = { grupos }/>
             <Botao>
-               Criar Texto
+               Cadastrar Herói
             </Botao>
          </form>
       </section>
