@@ -2,35 +2,69 @@ import './Formulario.css';
 import CampoTexto from '../CampoTexto';
 import ListaSuspensa from '../ListaSuspensa';
 import Botao from '../Botao';
+import { useState } from 'react';
 
-const Formulario = () => {
+const Formulario = (props) => {
 
-   const grupos = [
-      'Vingadores',
-      'Quarteto Fantástico',
-      'X-Men',
-      'Guardiões da Galáxia',
-      'Thunderbolts',
-      'Eternos',
-      'Agentes do Atlas'
+   const departamentos = [
+      'Licitação',
+      'Compras',
+      'Financeiro',
+      'Recursos Humanos',
+      'Controle Interno',
+      'Convênios',
+      'Informática',
+      'Arquivo',
+      'Serviços Gerais'
    ]
 
-   const AoSalvar = (evento) => {
+   const [nome, setNome] = useState('')
+   const [cargo, setCargo] = useState('')
+   const [imagem, setImagem] = useState('')
+   const [dept, setDept] = useState('')
+
+
+   const aoSalvar = (evento) => {
       evento.preventDefault()
-      console.log("Formulário cadastrado!!")
-   }
+      props.aoServidorCadastrado ({
+         nome,
+         cargo,
+         imagem,
+         dept
+      })
+  }
 
    return (
       <section className='formulario'>
-         <form onSubmit={ AoSalvar }>
-         <h2>Preencha os dados para criar o card do herói:</h2>
-            <CampoTexto obrigatorio={ true } label = "Nome" placeholder = "Ex:Tony Stark"/>
-            <CampoTexto obrigatorio={ true } label = "Alter Ego" placeholder = "Ex: Homem de Ferro"/>
-            <CampoTexto label = "Imagem" placeholder = "Insira o endereço da imagem aqui..."/>
-            <ListaSuspensa obrigatorio={ true } label="Equipe" itens = { grupos }/>
-            <Botao>
-               Cadastrar Herói
-            </Botao>
+         <form onSubmit={ aoSalvar }>
+         <h2>Preencha os dados para criar o card do servidor:</h2>
+            <CampoTexto 
+            label = "Nome"
+            obrigatorio={ true } 
+            placeholder = "Digite o nome aqui..."
+            valor = { nome }
+            aoAlterado = { valor => setNome(valor) }
+            />
+            <CampoTexto 
+            label = "Cargo" 
+            obrigatorio={ true } 
+            placeholder = "Digite o cargo aqui..."
+            valor = { cargo }
+            aoAlterado = { valor => setCargo(valor) }
+            />
+            <CampoTexto
+            label = "Imagem" 
+            placeholder = "Insira o endereço da imagem aqui..."
+            valor = { imagem }
+            aoAlterado = { valor => setImagem(valor) }
+            />
+            <ListaSuspensa label="Departamento"
+            obrigatorio = { true } 
+            itens = { departamentos }
+            valor = { dept }
+            aoAlterado = { valor => setDept(valor)}
+            />
+            <Botao> Cadastrar Servidor </Botao>
          </form>
       </section>
   )
