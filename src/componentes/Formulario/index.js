@@ -6,22 +6,10 @@ import { useState } from 'react';
 
 const Formulario = (props) => {
 
-   const departamentos = [
-      'Licitação',
-      'Compras',
-      'Financeiro',
-      'Recursos Humanos',
-      'Controle Interno',
-      'Convênios',
-      'Informática',
-      'Arquivo',
-      'Serviços Gerais'
-   ]
-
    const [nome, setNome] = useState('')
    const [cargo, setCargo] = useState('')
    const [imagem, setImagem] = useState('')
-   const [dept, setDept] = useState('')
+   const [departamento, setDepartamento] = useState('')
 
 
    const aoSalvar = (evento) => {
@@ -30,7 +18,7 @@ const Formulario = (props) => {
          nome,
          cargo,
          imagem,
-         dept
+         departamento
       })
   }
 
@@ -60,9 +48,9 @@ const Formulario = (props) => {
             />
             <ListaSuspensa label="Departamento"
             obrigatorio = { true } 
-            itens = { departamentos }
-            valor = { dept }
-            aoAlterado = { valor => setDept(valor)}
+            itens = { props.departamentos }
+            valor = { departamento }
+            aoAlterado = { valor => setDepartamento(valor)}
             />
             <Botao> Cadastrar Servidor </Botao>
          </form>
